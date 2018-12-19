@@ -1,27 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- some boilerplate HTML -->
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <!-- a title for the page -->
-    <title>NY Times Top News</title>
-    
+    <title> NY Times Top Ten </title>
+
     <!-- Materialize CDN -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>
     <!-- custom style.css file -->
     <link rel='stylesheet' href='./assets/style/style.css'>
 </head>
-<body>
-    
 
-    
+<body>
+
+
+    <!-- The Container holding our Search form and Results div -->
+    <!-- ===================================================== -->
+    <div class='container'>
+        <!-- Page Title -->
+        <div class='row'>
+            <h1 class = 'pageTitle center-align'> New York Times Top Ten </h1>
+        </div>
+
+        <!-- The Search Box will be next to the Results on a larger screen, -->
+        <!-- on a smaller screen the Search Box will appear above Results -->
+        <div class='row'>
+            <!-- Search Box -->
+            <div class='col s12 m5 SearchBox'>
+
+                <div class='row'>
+                    <!-- user input: search term -->
+                    <div class='input-field col s12'>
+                        <textarea id='searchQuery' class='materialize-textarea '></textarea>
+                        <label for='searchQuery'>Search Articles</label>
+                    </div>
+                </div>
+
+                <div class='row'>
+                    <!-- user input: begin date - oldest articles (Materialize date picker)-->
+                    <div class='col s6'>
+                        <input type='text' id='beginDate' class='datepicker beginDate' autoClose = true format = 'yyyy mm dd'>
+                        <label for='beginDate'>Search Earliest Date</label>
+                    </div>
+                    <!-- user input: end date - newest articles (Materialize date picker)-->
+                    <div class='col s6'>
+                        <input type='text' id='endDate' class='datepicker endDate' autoClose = true format = 'yyyy mm dd'>
+                        <label for='endDate'>Search Latest Date</label>
+                    </div>
+                </div>
+
+                <div class = 'row'>
+                    <!-- user choice: sort by - select between newest and oldest -->
+                    <div class = 'input-field col s6 red-text text-accent-1' style='margin-top: 20px;'>
+                        <select>
+                            <option value='' disabled selected>Sort articles</option>
+                            <option value='new'>newest first</option>
+                            <option value='old'>oldest first</option>
+                        </select>
+                        <Label>Sort articles by</Label>
+                    </div>
+                    <!-- Search button -->
+                    <div class = 'col s6 center-align' style='margin-top: 20px;'>
+                        <button class = 'btn-large waves-effect waves-light searchBtn' type = 'submit' name = 'search'>Search</button> 
+                    </div>
+                </div>
+
+            </div>
+            <!-- Results -->
+            <div class='col s12 m7 Results'>
+                <p> Use the search bar to find the top ten article results from the New York Times. </p>
+            </div>
+        </div>
+    </div>
+    <!-- ===================================================== -->
+
     <!-- jQuery CDN -->
-    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=' crossorigin='anonymous'></script>
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+        crossorigin='anonymous'></script>
     <!-- Materialize CDN -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
     <!-- custom article.js file -->
     <script src='./assets/js/article.js'></script>
+
 </body>
+
 </html>

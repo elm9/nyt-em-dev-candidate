@@ -3,7 +3,9 @@
 //    ###########################################################
 
 
-// clear article section on webpage
+
+
+// clear Results section on webpage
 
 // get query URL with API call's paramaters
 
@@ -15,3 +17,16 @@
 //    clear the article section and make the AJAX request to the 
 //    NYT API, then update the page
 //    ###########################################################
+
+
+//    These are here to make a couple of Materialize form components work
+//    ###################################################################
+
+        // The page listener for Materialize date picker
+        $(document).ready(function(){
+            $('.datepicker').datepicker();
+        });
+        // The page listener for Materialize form select
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
