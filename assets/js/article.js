@@ -3,9 +3,10 @@
 //    ###########################################################
 
 
-
-
 // clear Results section on webpage
+function clear() {
+    $('#Results').empty();
+}
 
 // get query URL with API call's paramaters
 
@@ -18,6 +19,12 @@
 //    NYT API, then update the page
 //    ###########################################################
 
+// added dummy button I'm going to delete to test out my clear function
+// ---- it works
+$('#clearBtn').on('click', function (event) {
+    event.preventDefault();
+    clear();
+})
 
 //    These are here to make a couple of Materialize form components work
 //    ###################################################################
