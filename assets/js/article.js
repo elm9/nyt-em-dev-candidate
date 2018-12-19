@@ -25,25 +25,48 @@
 
     // search JSON results for text search input, filters results
     // filters results based on the newer or older sortChoice
-    function filterResults() {
+    function filterResults(result) {
 
+        // an empty array to hold the new filtered results
+        var filteredResults = [];
+        // results is the location of the search results in the json object
+        var results = result.results;
         // if the #searchQuery is not equal to null, make all letters lowercase 
         // and save in searchQuery variable
         if ( ($('#searchQuery').val().trim()) !== null ) {
             var searchQuery = $('#searchQuery').val().trim().toLowerCase();
-            console.log(searchQuery);
-        }
-        // the searchQuery will filter the JSON objects results based on the text 
-        // in the article titles and abstract
+            // console.log(searchQuery);
+            // the searchQuery will filter the JSON objects results based on the text 
+            // in the article titles and abstract
+            for (var i = 0; i < results.length; i++) {
+                // a couple of variables for the titles and abstracts of all results
+                // .toLowerCase makes the search case insensitive 
+                var resTitle = (results[i].title).toLowerCase();
+                var resAbstract = (results[i].abstract).toLowerCase();
 
+                // if statement to check if the searchQuery matches anything from 
+                // resTitle OR resAbstract
+                if ((resTitle.indexOf(searchQuery) > -1) || (resAbstract.indexOf(searchQuery) > -1)) {
+                    // push the results of the search to the filteredResults array
+                    filteredResults.push(results[i]);
+                }
+            }
+        }
+        console.log(filteredResults);
         // once the results have been filtered, they will be sorted based on the
         // sort choice, either by newest or oldest published date
-        // if the #sortChoice value is not equal to null, store the value in 
-        // sortChoice variable
-        if ( ($('#sortChoice').val()) !== null ) {
-            var sortChoice = $('#sortChoice').val();
-            console.log(sortChoice);
-        }
+        
+        // the value of the sortChoice selection is stored in a variable
+        var sortChoice = $('#sortChoice').val();
+        // the sortChoice is tested to see if it equals newest or oldest
+        if ( sortChoice === 'newest' ) {
+            console.log(newest)
+        } else if ( sortChoice === 'oldest' ) {
+            console.log(oldest)
+        } //else (
+            
+        // )
+    
     }
 
 
@@ -71,15 +94,11 @@
             url: queryURL,
             method: 'GET'
         }).done(function(result){
-            console.log(result);
-        })
-        filterResults();
-        // filter the result through the filterResults function -- filters results based on
-        // search terms and sort choice
-        // .then(filterResults(results))
-        
-        // then the fresh data gets passed as an argument to the updateContent function
-        // .then(updateContent);
+            // filter the result through the filterResults function -- filters results based on
+            // search terms and sort choice
+            // console.log(result);
+            filterResults(result)
+        })//.then(updateContent); // then the fresh data gets passed as an argument to the updateContent function
     });
 
 
