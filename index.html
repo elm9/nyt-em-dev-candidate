@@ -23,58 +23,78 @@
     <div class='container'>
         <!-- Page Title -->
         <div class='row'>
-            <h1 class = 'pageTitle center-align'> New York Times Top Ten </h1>
+            <h1 class='pageTitle center-align'> New York Times Top Ten </h1>
         </div>
 
-        <!-- The Search Box will be next to the Results on a larger screen, -->
-        <!-- on a smaller screen the Search Box will appear above Results -->
+        <!-- The Search Box will be in line above the Results on a larger screen, -->
+        <!-- on a smaller screen the Search Box will appear above Results in three rows-->
+        <!-- Search Box -->
         <div class='row'>
-            <!-- Search Box -->
-            <div class='col s12 m5 SearchBox'>
 
-                <div class='row'>
-                    <!-- user input: search term -->
-                    <div class='input-field col s12'>
-                        <textarea id='searchQuery' class='materialize-textarea '></textarea>
-                        <label for='searchQuery'>Search Articles</label>
-                    </div>
-                </div>
-
-                <div class='row'>
-                    <!-- user input: begin date - oldest articles (Materialize date picker)-->
-                    <div class='col s6'>
-                        <input type='text' id='beginDate' class='datepicker beginDate' autoClose = true format = 'yyyy mm dd'>
-                        <label for='beginDate'>Search Earliest Date</label>
-                    </div>
-                    <!-- user input: end date - newest articles (Materialize date picker)-->
-                    <div class='col s6'>
-                        <input type='text' id='endDate' class='datepicker endDate' autoClose = true format = 'yyyy mm dd'>
-                        <label for='endDate'>Search Latest Date</label>
-                    </div>
-                </div>
-
-                <div class = 'row'>
-                    <!-- user choice: sort by - select between newest and oldest -->
-                    <div class = 'input-field col s6' style='margin-top: 20px;'>
-                        <select  id= 'sortChoice'>
-                            <option value='' disabled selected>Sort articles</option>
-                            <option value='newest'>newest first</option>
-                            <option value='oldest'>oldest first</option>
-                        </select>
-                        <Label>Sort articles by</Label>
-                    </div>
-                    <!-- Search button -->
-                    <div class = 'col s6 center-align' style='margin-top: 20px;'>
-                        <button class = 'btn-large waves-effect waves-light' id= 'searchBtn' type = 'submit' name = 'search'>Search</button> 
-                    </div>
-                </div>
-
+            <!-- user input: search term -->
+            <div class='input-field col s12 m4'>
+                <textarea id='searchQuery' class='materialize-textarea '></textarea>
+                <label for='searchQuery'>Search Articles</label>
             </div>
-            <!-- Results -->
-            <div class='col s12 m7' id='Results'>
+
+
+            <!-- user choice: select section to search from -->
+            <div class='input-field col s6 m3'>
+                <select id='sectionChoice'>
+                    <option value='home'>Home</option>
+                    <option value='opinion'>Opinion</option>
+                    <option value='world'>World</option>
+                    <option value='national'>National</option>
+                    <option value='politics'>Politics</option>
+                    <option value='upshot'>Upshot</option>
+                    <option value='nyregion'>NY Region</option>
+                    <option value='business'>Business</option>
+                    <option value='technology'>Technology</option>
+                    <option value='science'>Science</option>
+                    <option value='health'>Health</option>
+                    <option value='sports'>Sports</option>
+                    <option value='arts'>Arts</option>
+                    <option value='books'>Books</option>
+                    <option value='movies'>Movies</option>
+                    <option value='theater'>Theater</option>
+                    <option value='sundayreview'>Sunday Review</option>
+                    <option value='fashion'>Fashion</option>
+                    <option value='tmagazine'>T Magazine</option>
+                    <option value='food'>Food</option>
+                    <option value='travel'>Travel</option>
+                    <option value='magazine'>Magazine</option>
+                    <option value='realestate'>Real Estate</option>
+                    <option value='automobiles'>Automobiles</option>
+                    <option value='obituaries'>Obituaries</option>
+                    <option value='insider'>Insider</option>
+                </select>
+                <label>Select NY Times section</label>
+            </div>
+            <!-- user choice: sort by - select between newest and oldest -->
+            <div class='input-field col s6 m3'>
+                <select id='sortChoice'>
+                    <option value='' disabled selected>Sort articles</option>
+                    <option value='newest'>newest first</option>
+                    <option value='oldest'>oldest first</option>
+                </select>
+                <Label>Sort articles by</Label>
+            </div>
+
+            <!-- Search button -->
+            <div class='col s12 m2 center-align' style='margin-top: 20px;'>
+                <button class='btn-large waves-effect waves-light' id='searchBtn' type='submit' name='search'>Search</button>
+            </div>
+
+        </div>
+
+
+        <!-- Results -->
+        <div class='row'>
+            <div class='col s12' id='Results'>
                 <p> Use the search bar to find the top ten article results from the New York Times. </p>
             </div>
         </div>
+    </div>
     </div>
     <!-- ===================================================== -->
 
