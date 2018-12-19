@@ -15,23 +15,10 @@
         // params order: API key, search term, begin date, end date, sort
         var queryParams = { 'api-key': 'c43fdcb0dd074a0bb172684363bdf7bd' } 
         
-        // pull text from the user search query and add to the queryParams object 'q'
-        // #### this is not supported by the top stories API
-        queryParams.q = $('#searchQuery').val().trim();
-        
         // store the #sectionChoice value in a variable to add to the queryURL
         var sectionChoice = $('#sectionChoice').val();
         
-        // if the user chose to filter results from newest/oldest add it to the queryParams object 'sort'
-        // this is taking the value of the selected choice
-        // #### this is not supported by the top stories API
-        var sortChoice = $('#sortChoice').val();
-        if (sortChoice != null) {
-            queryParams.sort = sortChoice;
-        }
-        
         // return the query URL with the paramaters according to the NYT API docs
-        // console.log(queryParams);
         console.log(queryURL + sectionChoice + '.json?' + $.param(queryParams));
         return queryURL + sectionChoice + '.json?' + $.param(queryParams);
     }
@@ -39,7 +26,24 @@
     // search JSON results for text search input, filters results
     // filters results based on the newer or older sortChoice
     function filterResults() {
-        
+
+        // if the #searchQuery is not equal to null, make all letters lowercase 
+        // and save in searchQuery variable
+        if ( ($('#searchQuery').val().trim()) !== null ) {
+            var searchQuery = $('#searchQuery').val().trim().toLowerCase();
+            console.log(searchQuery);
+        }
+        // the searchQuery will filter the JSON objects results based on the text 
+        // in the article titles and abstract
+
+        // once the results have been filtered, they will be sorted based on the
+        // sort choice, either by newest or oldest published date
+        // if the #sortChoice value is not equal to null, store the value in 
+        // sortChoice variable
+        if ( ($('#sortChoice').val()) !== null ) {
+            var sortChoice = $('#sortChoice').val();
+            console.log(sortChoice);
+        }
     }
 
 
@@ -69,6 +73,10 @@
         }).done(function(result){
             console.log(result);
         })
+        filterResults();
+        // filter the result through the filterResults function -- filters results based on
+        // search terms and sort choice
+        // .then(filterResults(results))
         
         // then the fresh data gets passed as an argument to the updateContent function
         // .then(updateContent);
