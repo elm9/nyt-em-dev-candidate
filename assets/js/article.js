@@ -8,7 +8,7 @@
         $('#Results').empty();
     }
 
-    // get query URL with API call's paramaters
+    // get query URL with API call's paramaters -- article section choice
     function getQueryURL() {
         // API query url stored inside a variable
         var queryURL = 'https://api.nytimes.com/svc/topstories/v2/';
@@ -16,23 +16,32 @@
         var queryParams = { 'api-key': 'c43fdcb0dd074a0bb172684363bdf7bd' } 
         
         // pull text from the user search query and add to the queryParams object 'q'
-        // queryParams.q = $('#searchQuery').val().trim();
+        // #### this is not supported by the top stories API
+        queryParams.q = $('#searchQuery').val().trim();
         
         // store the #sectionChoice value in a variable to add to the queryURL
         var sectionChoice = $('#sectionChoice').val();
         
         // if the user chose to filter results from newest/oldest add it to the queryParams object 'sort'
         // this is taking the value of the selected choice
-        // var sortChoice = $('#sortChoice').val();
-        // if (sortChoice != null) {
-        //     queryParams.sort = sortChoice;
-        // }
+        // #### this is not supported by the top stories API
+        var sortChoice = $('#sortChoice').val();
+        if (sortChoice != null) {
+            queryParams.sort = sortChoice;
+        }
         
         // return the query URL with the paramaters according to the NYT API docs
         // console.log(queryParams);
         console.log(queryURL + sectionChoice + '.json?' + $.param(queryParams));
         return queryURL + sectionChoice + '.json?' + $.param(queryParams);
     }
+
+    // search JSON results for text search input, filters results
+    // filters results based on the newer or older sortChoice
+    function filterResults() {
+        
+    }
+
 
     // update content of page to show new results
 
