@@ -6,15 +6,13 @@ Using this single page website, the user is able to search for articles using a 
 
 ## Technologies Used
 
-*[Materialize](https://materializecss.com/) - the frontend framework, form, buttons, and cards are all created using Materialize
-
-*[Moment.js](https://momentjs.com/) - Moment.js helped with converting the date and time to a diffent timezone and simplifying the reformatting of the date and time
-
-*[jQuery](https://jquery.com/) - the JavaScript library everyone loves to hate, here it's mostly used for DOM manipulation
-
-*[Google Fonts](https://fonts.google.com/specimen/Playfair+Display) - Playfair font used for the page header and card titles
+* [Materialize](https://materializecss.com/) - the frontend framework, form, buttons, and cards are all created using Materialize
+* [Moment.js](https://momentjs.com/) - Moment.js helped with converting the date and time to a diffent timezone and simplifying the reformatting of the date and time
+* [jQuery](https://jquery.com/) - the JavaScript library everyone loves to hate, here it's mostly used for DOM manipulation
+* [Google Fonts](https://fonts.google.com/specimen/Playfair+Display) - Playfair font used for the page header and card titles
 
 ##
+
 >This is my completed Workpath Developer Candidate Code Project.
 
 
