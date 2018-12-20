@@ -6,6 +6,7 @@
     // clear Results section on webpage
     function clear() {
         $('#Results').empty();
+        $('#textCenter').empty();
     }
 
     // get query URL with API call's paramaters -- article section choice
@@ -51,11 +52,20 @@
     }
     // update content of page to show new results
     function updateContent () {
+        // number of results
+        var numResults = filteredResults.length;
+        // append the total number of results to the #Results div -- the message changes depending on the number of results
+        if (numResults > 10) {
+            $('#textCenter').append('<div class = "bgText"><h6 id="numResults">' + numResults + ' results were found. These top ten articles are the most interesting.</h6></div>');
+        } else if (numResults < 10 && numResults > 0) {
+            $('#textCenter').append('<div class = "bgText"><h6 id="numResults">' + numResults + ' results were found, here they are.</h6></div>');
+        } else {
+            $('#textCenter').append('<div class = "bgText"><h6 id="numResults">' + numResults + ' results were found. Try changing the search parameters.</h6></div>');
+        }
+        
         // a loop to define the number of articles, reformat each publish date, and build a card for each article
         for (var i = 0; i < filteredResults.length; i++) {
-            // number of results
-            console.log(filteredResults);
-            var numResults = filteredResults.length;
+            
             // vars for the title, abstract, URL, imageURL, and article number
             var title = filteredResults[i].title;
             var abstract = filteredResults[i].abstract;
@@ -73,16 +83,19 @@
             // pull the date and time from the string again and stick together in utc variable
             var utc = (utcFull.slice(0, 10)) + ' ' + (utcFull.slice(11, 16));
             // use Moment.js to convert timezone to fiji time and format 
-            var fiji = moment.tz(utc, 'Pacific/Fiji').format('M/D/YYYY h:mm A FJT');
-            console.log(fiji); // var fiji is the new date variable
+            var fiji = moment.tz(utc, 'Pacific/Fiji').format('M/D/YYYY  h:mm  A  FJT');
+            // var fiji is the new date variable
             // ##############################################################
 
+        
             // now take the extracted information from the results and push them into cards 
             // create a div and add the class col s12 m6 l4
             var articleCard = $('<div>');
-            articleCard.addClass('col s12 m6 l4');
-            // add new div to the results div in html 
-            $('#Results').append(articleCard);
+            articleCard.addClass('col s12 m6');
+            // add new div to the results div in html if the numArticle is <= 10
+            if (numArticle <= 10){
+                $('#Results').append(articleCard);
+            }
             // add div content to a new variable beginning with the title
             var cardContent = $('<div class = "card horizontal"> \n <div class="card-stacked"> \n <div class ="card-content"> \n <h5 class = "header">' 
                 + title + '</h5>\n <p class ="abstract">' 
@@ -94,19 +107,8 @@
                 +'</p> </div>\n </div> \n </div> \n </div>');
             // append card content to the articleCard
             articleCard.append(cardContent);
-
-
-
-
         }
-
-
-            
-
-            
-
     }
-
 
 //    click handler listening for the search button click to 
 //    clear the article section and make the AJAX request to the 
