@@ -19,12 +19,8 @@ body {
     text-align: center;
 }
 
-/* #numResults {
-    text-align: center;
-    padding: 10px;
+#moreBtn {
+    margin-top: 10px;
+    width: 80%;
 }
 
-#startText {
-    text-align: center;
-    padding: 10px;
-} */
