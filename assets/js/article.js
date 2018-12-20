@@ -126,7 +126,7 @@ function genCard() {
             articleCard.append(cardContent);
             // update the textCenter
             $('#textCenter').empty();
-            $('#textCenter').append('<h5>Here are all ' + numResults + ' results.</h5>')
+            $('#textCenter').append('<h4>Here are all ' + numResults + ' results.</h4>')
         })
     }
 }
@@ -137,11 +137,11 @@ function updateContent() {
     var numResults = filteredResults.length;
     // append the total number of results to the #Results div -- the message changes depending on the number of results
     if (numResults > 10) {
-        $('#textCenter').append('<div class = "bgText"><h5 id="numResults">' + numResults + ' results were found. These top ten articles are the most interesting.</h5></div> \n <button class="btn-large waves-effect waves-red amber lighten-2 black-text z-depth-4" id="moreBtn" type="submit">Okay, show me more.</button>');
+        $('#textCenter').append('<div class = "bgText"><h4 id="numResults">' + numResults + ' results were found. These top ten articles are the most interesting.</h4></div> \n <button class="btn-large waves-effect waves-red amber lighten-2 black-text z-depth-4" id="moreBtn" type="submit">Okay, show me more.</button>');
     } else if (numResults < 10 && numResults > 0) {
-        $('#textCenter').append('<div class = "bgText"><h5 id="numResults">' + numResults + ' results were found, here they are.</h5></div>');
+        $('#textCenter').append('<div class = "bgText"><h4 id="numResults">' + numResults + ' results were found, here they are.</h4></div>');
     } else {
-        $('#textCenter').append('<div class = "bgText"><h5 id="numResults">' + numResults + ' results were found. Try changing the search parameters.</h5></div>');
+        $('#textCenter').append('<div class = "bgText"><h4 id="numResults">' + numResults + ' results were found. Try changing the search parameters.</h4></div>');
     }
     // calls the genCard function
     genCard();
