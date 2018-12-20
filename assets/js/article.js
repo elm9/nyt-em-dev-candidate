@@ -54,32 +54,57 @@
         // a loop to define the number of articles, reformat each publish date, and build a card for each article
         for (var i = 0; i < filteredResults.length; i++) {
             // number of results
+            console.log(filteredResults);
             var numResults = filteredResults.length;
-            // article number
-            var numArticle = i + 1;
-            // vars for the title, abstract, URL, published date, and image URL
+            // vars for the title, abstract, URL, imageURL, and article number
             var title = filteredResults[i].title;
             var abstract = filteredResults[i].abstract;
             var articleURL = filteredResults[i].short_url;
-            var imageURL = filteredResults[i].multimedia[0].url;
-            // this is where the date is reformatted
-            var published = filteredResults[i].published_date;
-            // split the published_date string
-            var date = published.split('');
-                console.log(date);
-            
-            // console.log(numArticle + '\n' + title + '\n' + abstract + '\n' + articleURL + '\n' + imageURL + '\n' + published);
+            var imageURL = filteredResults[i].multimedia[3];
+            var numArticle = i + 1;
+            // ##############################################################
+            // this is where the date is reformatted using moment.js
+            // get the published_date from article in default timezone
+            var published = filteredResults[i].published_date; 
+            // pull the date and time from the published string and stick the date and time together in a format that works with moment.js in est variable
+            var est = (published.slice(0, 10)) + ' ' + (published.slice(11, 16));
+            // convert the EST date/time to UTC
+            var utcFull = moment.tz(est, 'America/Toronto').utc().format();
+            // pull the date and time from the string again and stick together in utc variable
+            var utc = (utcFull.slice(0, 10)) + ' ' + (utcFull.slice(11, 16));
+            // use Moment.js to convert timezone to fiji time and format 
+            var fiji = moment.tz(utc, 'Pacific/Fiji').format('M/D/YYYY h:mm A FJT');
+            console.log(fiji); // var fiji is the new date variable
+            // ##############################################################
 
-            
-            // function formatPublished(published) {
-                
-            // }
-            // formatPublished();
-            // if there is an imageURL add image to card
-            // if (imageURL !== undefined) {
+            // now take the extracted information from the results and push them into cards 
+            // create a div and add the class col s12 m6 l4
+            var articleCard = $('<div>');
+            articleCard.addClass('col s12 m6 l4');
+            // add new div to the results div in html 
+            $('#Results').append(articleCard);
+            // add div content to a new variable beginning with the title
+            var cardContent = $('<div class = "card horizontal"> \n <div class="card-stacked"> \n <div class ="card-content"> \n <h5 class = "header">' 
+                + title + '</h5>\n <p class ="abstract">' 
+                + abstract 
+                + '</p> \n <div class ="card-action artLink"> \n <a class = "btn-floating halfway-fab waves-effect waves-light red" href ="'
+                + articleURL
+                + '"> <i class = "material-icons">link</i> </a> \n </div> \n <p>'
+                + fiji
+                +'</p> </div>\n </div> \n </div> \n </div>');
+            // append card content to the articleCard
+            articleCard.append(cardContent);
 
-            // } 
+
+
+
         }
+
+
+            
+
+            
+
     }
 
 
