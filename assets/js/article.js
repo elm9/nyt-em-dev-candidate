@@ -153,6 +153,8 @@ function updateContent() {
 //    NYT API, then update the page
 //    ###########################################################
 
+
+
 // the .on('click') function for the search button
 $('#searchBtn').on('click', function (event) {
     // event.preventDefault prevents the page from reloading on form submit
@@ -175,6 +177,8 @@ $('#searchBtn').on('click', function (event) {
         filterResults(result)
     }).then(updateContent); // then the fresh data gets passed as an argument to the updateContent function
 });
+
+
 
 
 //    These are here to make a couple of Materialize form components work
